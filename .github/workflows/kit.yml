@@ -1,0 +1,19 @@
+name: kit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # The whole format matrix, for every subject, not a sample: see check/kit.py.
+  complete:
+    name: the kit is complete
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 check/kit.py
